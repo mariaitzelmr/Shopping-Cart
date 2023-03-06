@@ -1,0 +1,28 @@
+body {
+    background-color: rgb(5, 50, 5, 0.5);
+}
+
+input {
+    padding: 0.3rem;
+    margin: 0.2rem;
+    border-radius: 5px;
+}
+
+.card {
+    background-color: rgb(50, 150, 50, 0.5);
+}
+
+.accordion-button {
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: rgb(1, 20, 1, 0.5);
+    color: #01dd01;
+    transition: background-color 1s, color 1s;
+}
+
+.btn-primary:hover {
+    background-color: rgb(1, 200, 1, 0.5);
+    color: #012001;
+}
