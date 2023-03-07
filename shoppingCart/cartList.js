@@ -2,8 +2,9 @@ function CartList({ setItems, setCart, setTotal }) {
     const { items, cart } = React.useContext(ProductContext);
     const { Accordion, Button } = ReactBootstrap;
 
-    const deleteCartItem = (index) => {
+    const deleteCartItem = (itemName) => {
         const newItems = [...items];
+        let index = cart.findIndex((item) => item.name === itemName);
         let newCart = cart.filter((item, i) => index != i);
         let newTotal = newCart.reduce((accu, item) => accu += item.cost, 0);
         const itemIndex = items.findIndex(
@@ -16,7 +17,7 @@ function CartList({ setItems, setCart, setTotal }) {
     };
 
     let cartList = cart
-        .reduce((accu, item) => {
+        .reduce((accu, item, index) => {
             const cartIndex = accu.findIndex((accumItem) => accumItem.name == item.name);
             if (cartIndex < 0) {
                 return [...accu, { name: item.name, count: 1 }];
@@ -29,7 +30,7 @@ function CartList({ setItems, setCart, setTotal }) {
             return (
                 <li key={index} style={{display: "flex", justifyContent: "space-between", margin: "0.2rem"}}>
                     <div>{item.name} : {item.count}</div>
-                    <Button onClick={() => deleteCartItem(index)}>X</Button>
+                    <Button onClick={() => deleteCartItem(item.name)}>X</Button>
                 </li>
             );
         });
